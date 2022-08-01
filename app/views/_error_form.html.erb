@@ -1,0 +1,16 @@
+<div class="container text-danger">
+  <% if user.errors.any? %>
+    <% if user.errors.count == 1 %>
+      <h2><%= user.errors.count %> error prohibited this obj from being saved:</h2>
+    <% else %>
+      <h2><%= user.errors.count %> errors prohibited this obj from being saved:</h2>
+    <% end %>
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <div class="container">
+          <%= link_to "Bookers", root_path, class:"navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-tabel="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
+            <ul class = "navbar-nav me-auto mb-list-unstyled" >
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to user_path(current_user), class:"nav-link text-light"  do %>
+                    <i class="fas fa-home text-light nav-link"> <span class="nav-size">Home</span></i>
+                  <% end %>
+                </li>
+                <li class="nav-item list-unstyled ">
+                  <%= link_to  users_path, class:"nav-link text-light"  do %>
+                    <i class="fas fa-users text-light nav-link"> <span class="nav-size">Users</span></i>
+                  <% end %>
+                </li>
+                <li class="nav-item list-unstyled">
+                  <%= link_to  books_path, class:"nav-link text-light" do %>
+                    <i class="fas fa-book-open text-light nav-link"> <span class="nav-size">Books</span></i>
+                  <% end %>
+                </li>
+                <li class="nav-item list-unstyled">
+                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                    <i class="fas fa-sign-out-alt text-light nav-link"> <span class="nav-size">logout</span></i>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class=" list-unstyled ">
+                  <%= link_to root_path, class:"nav-link text-light"  do %>
+                    <i class="fas fa-home text-light nav-link"> <span class="nav-size">Home</span></i>
+                  <% end %>
+                </li>
+                <li class="nav-item list-unstyled ">
+                  <%= link_to  home_about_path, class:"nav-link text-light"  do %>
+                    <i class="fas fa-link text-light nav-link"> <span class="nav-size">About</span></i>
+                  <% end %>
+                </li>
+                <li class="nav-item list-unstyled">
+                  <%= link_to  new_user_registration_path, class:"nav-link text-light sign_up" do %>
+                    <i class="fas fa-user-plus text-light nav-link"> <span class="nav-size">sign up</span></i>
+                  <% end %>
+                </li>
+                <li class="nav-item list-unstyled">
+                  <%= link_to user_session_path, class:"nav-link text-light sign_in" do %>
+                    <i class="fas fa-sign-in-alt text-light nav-link"> <span class="nav-size">login</span></i>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="mb-5">
+      <% if flash[:notice] %>
+        <span class="text-success">
+          <%= flash[:notice] %>
+        </span>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <footer>
+        <div class="mt-5 container">
+          <div class="row">
+            <div class="mx-auto">
+              <p>CopyRight infratop.inc</p>
+            </div>
+          </div>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/e1240415e9.js" crossorigin="anonymous"></script>
+  </body>
+</html>
