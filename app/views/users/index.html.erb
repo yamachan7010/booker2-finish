@@ -59,6 +59,7 @@
               <td><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "40x40" %></td>
               <td><%= user.name %></td>
               <td><%= user.introduction %></td>
+              <td>コメント数：<span id="book_comments_count"><%= @book.book_comments.count %></span></td>
               <td><%= link_to "Show", user_path(user.id) %></td>
             </tr>
           <% end %>
