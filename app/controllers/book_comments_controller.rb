@@ -13,7 +13,7 @@ class BookCommentsController < ApplicationController
     book_comment = @book.book_comments.find(params[:id])
     if current_user.id == book_comment.user.id
       book_comment.destroy
-    redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path)
     else
       render "records/show"
     end

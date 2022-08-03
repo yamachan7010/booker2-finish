@@ -25,7 +25,7 @@
           <% end %>
         <% end %>
       </div>
-      
+
       <h2 class="mt-2">New book</h2>
       <%= form_with model: @book, local:true do |f| %>
         <div class="form-group">
@@ -41,7 +41,7 @@
         </div>
       <% end %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
       <h1>Users</h1>
       <table class="table table-inverse table-hover">
@@ -59,7 +59,7 @@
               <td><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "40x40" %></td>
               <td><%= user.name %></td>
               <td><%= user.introduction %></td>
-              <td>コメント数：<span id="book_comments_count"><%= @book.book_comments.count %></span></td>
+              <!--<td>コメント数：<span id="book_comments_count"><%#= user.book.book_comments.count %></span></td>-->
               <td><%= link_to "Show", user_path(user.id) %></td>
             </tr>
           <% end %>
